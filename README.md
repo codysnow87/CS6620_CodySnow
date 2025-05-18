@@ -12,3 +12,4 @@ CI/CD pipeline part 1
 
 #### How to run pipeline
 -  As specified in .github/workflows/python-app.yml, the pipeline is triggered by either commits to main or PRs into main
+-  To run manually, click Actions, then click the "Python Application" link in the left-hand pane, then click "Run Workflow" option on the top right of the window showing workflow runs
