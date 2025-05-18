@@ -46,6 +46,3 @@ def test_is_10_prime(primes):
 
 def test_is_11_prime(primes):
     assert primes.is_prime(11) is True
-
-def test_fail_check_pipeline(primes):
-    assert primes.is_prime(2) is False
