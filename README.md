@@ -53,13 +53,6 @@ Create a repository with application code, corresponding tests, a dependency‐m
 
 ---
 
-## Dependency Management
-
-- **requirements.txt**  
-    pytest
-
----
-
 ## CI/CD Workflow
 
 - **Workflow file:** `.github/workflows/python-app.yml`  
