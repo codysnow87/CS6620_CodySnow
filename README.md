@@ -15,10 +15,9 @@ Create a repository with application code, corresponding tests, a dependency‐m
 
 1. [Program Overview](#program-overview)  
 2. [Repository Structure](#repository-structure)  
-3. [Dependency Management](#dependency-management)  
-4. [CI/CD Workflow](#cicd-workflow)  
-5. [Cloning & Setup](#cloning--setup)  
-6. [Running Tests](#running-tests)  
+3. [CI/CD Workflow](#cicd-workflow)  
+4. [Cloning & Setup](#cloning--setup)  
+5. [Running Tests](#running-tests)  
 
 ---
 
