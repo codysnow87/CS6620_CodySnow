@@ -1,14 +1,13 @@
 # CS6620_CodySnow
 
-This repository serves as the foundation for semester‐long assignments.
+This repository holds submissions for semester assignments.
 
 ---
 
-## Current Assignment: CI/CD Pipeline (Part 1)
+## Current Assignment: CI/CD Pipeline (Part 2)
 
 **Goal:**  
-Create a repository with application code, corresponding tests, a dependency‐management file, and a GitHub Actions workflow that runs on commits/PRs to `main` (or manually on demand).
-
+Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests for each endpoint
 ---
 
 ## Table of Contents
@@ -23,31 +22,41 @@ Create a repository with application code, corresponding tests, a dependency‐m
 
 ## Program Overview
 
-### Check for Primes
+### CRUD APIs
 
 - **Description:**  
-  A simple utility to check whether a given integer is prime.
+  A simple demo of RESTful APIs running in a docker container.
 - **Key Class:**  
-  - `PrimeChecker` (located in `primes/PrimeChecker.py`)  
+  - `app.py` (located in `REST_API/app.py`)  
     - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
+    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
+    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
+    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
+TODO^^^ add GET POST PUT DELETE
+
 
 ---
 
 ## Repository Structure
 
     CS6620_CodySnow/
-    ├── primes/
-    │   ├── PrimeChecker.py
-    │   └── primes_test.py
-    ├── requirements.txt
+    ├── archive/
+        ├── primes/
+        │   ├── PrimeChecker.py
+        │   └── primes_test.py
+    ├── REST_API/
+        └── app.py
+        └── Dockerfile
+        └── requirements.txt
     └── .github/
         └── workflows/
             └── python-app.yml
 
-- **primes/**  
-  - `PrimeChecker.py` – Implements the prime‐checking logic.  
-  - `primes_test.py` – pytest suite for `PrimeChecker`.  
-- **requirements.txt** – Lists required Python packages (e.g., `pytest`).  
+- **REST_API/**  
+  - `app.py` – Implements the RESTful APIs
+  - `Dockerfile` – container build script  
+  - `requirements.txt` - app-specific requirements for the Docker image
+- **requirements.txt** – Lists Python test package (`pytest`).  
 - **.github/workflows/python-app.yml** – GitHub Actions workflow that installs dependencies and runs tests.
 
 ---
@@ -87,14 +96,17 @@ Create a repository with application code, corresponding tests, a dependency‐m
 
 ---
 
-## Running Tests
+## Running the Docker container
 
-Since `PrimeChecker` is not an executable, run the pytest suite:
+1. TODO
+2. 
 
-1. Change into the `primes` directory:  
-       cd primes  
-2. Execute pytest:  
-       pytest primes_test.py  
+---
+
+## Running Tests 
+
+1. TODO
+2. 
 
 You should see output indicating which tests passed/failed.
 
@@ -104,3 +116,6 @@ You should see output indicating which tests passed/failed.
 
 - **GitHub “Cloning a repository” guide:**  
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository  
+
+### Repo Change Log
+- 6/23: Archived "Check for Primes" toy program from Pipeline Assignment Part 1 and added new API container for Pipeline Assignment Part 2
