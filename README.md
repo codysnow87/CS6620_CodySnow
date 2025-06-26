@@ -41,7 +41,7 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
         └── app.py
         └── Dockerfile
         └── requirements.txt
-    ├── REST_API_Test/
+    ├── tests/
         └── test_app.py
         └── requirements.txt
     └── .github/
