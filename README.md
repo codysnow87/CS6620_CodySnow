@@ -56,8 +56,10 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
   - `app.py` – Implements the RESTful APIs
   - `Dockerfile` – container build script  
   - `requirements.txt` - app-specific requirements for the Docker image
-- **requirements.txt** – Lists Python test package (`pytest`).  
-- **.github/workflows/python-app.yml** – GitHub Actions workflow that installs dependencies and runs tests.
+- **tests/**
+  - `test_app.py` – Tests the RESTful APIs
+  - `requirements.txt` – requirements for running APIs and running the tests
+- **.github/workflows/flask-api.yml** – GitHub Actions workflow that installs dependencies and runs tests.
 
 ---
 
