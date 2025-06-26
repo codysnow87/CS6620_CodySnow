@@ -16,6 +16,7 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
 2. [Repository Structure](#repository-structure)  
 3. [CI/CD Workflow](#cicd-workflow)  
 4. [Cloning & Setup](#cloning--setup)  
+5. [Running the APIs in Docker](#running-the-docker-container)
 5. [Running Tests](#running-tests)  
 
 ---
@@ -26,14 +27,6 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
 
 - **Description:**  
   A simple demo of RESTful APIs running in a docker container.
-- **Key Class:**  
-  - `app.py` (located in `REST_API/app.py`)  
-    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
-    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
-    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
-    - Method: `is_prime(n)` → returns `True` if `n` is prime; otherwise `False`.
-TODO^^^ add GET POST PUT DELETE
-
 
 ---
 
@@ -48,9 +41,16 @@ TODO^^^ add GET POST PUT DELETE
         └── app.py
         └── Dockerfile
         └── requirements.txt
+    ├── REST_API_Test/
+        └── test_app.py
+        └── requirements.txt
     └── .github/
         └── workflows/
             └── python-app.yml
+            └── flask-api.yml
+    └── Dockerfile
+    └── run_api.sh
+    └── run_tests.sh
 
 - **REST_API/**  
   - `app.py` – Implements the RESTful APIs
@@ -63,7 +63,7 @@ TODO^^^ add GET POST PUT DELETE
 
 ## CI/CD Workflow
 
-- **Workflow file:** `.github/workflows/python-app.yml`  
+- **Workflow file:** `.github/workflows/flask-api.yml`  
 - **Triggers:**  
   - Pushes or pull‐requests targeting the `main` branch  
   - Manual trigger via GitHub Actions UI  
@@ -98,17 +98,19 @@ TODO^^^ add GET POST PUT DELETE
 
 ## Running the Docker container
 
-1. TODO
-2. 
+1. Ensure docker and python are installed on your system
+2. From the root folder of the repository, run the script `run_api.sh` via the command `sh run_api.sh`
+3. The docker container will build and launch
 
 ---
 
-## Running Tests 
+## Running Tests
 
-1. TODO
-2. 
+1. Ensure docker and python are installed on your system
+2. From the root folder of the repository, run the script `run_tests.sh` via the command `sh run_tests.sh`
+3. The docker container will build and launch
 
-You should see output indicating which tests passed/failed.
+You should see output indicating which tests passed/failed in the terminal output.
 
 ---
 

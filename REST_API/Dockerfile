@@ -1,4 +1,4 @@
-FROM python:alpine-latest
+FROM python:alpine3.22
 
 LABEL maintainer="Cody Snow"
 LABEL version="0.1"
