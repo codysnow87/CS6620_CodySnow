@@ -7,7 +7,7 @@ This repository holds submissions for semester assignments.
 ## Current Assignment: CI/CD Pipeline (Part 2)
 
 **Goal:**  
-Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests for each endpoint
+  - Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests for each endpoint
 ---
 
 ## Table of Contents
@@ -60,7 +60,7 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
   - `test_app.py` – Tests the RESTful APIs
   - `requirements.txt` – requirements for running APIs and running the tests
 - **.github/workflows/flask-api.yml** – GitHub Actions workflow that installs dependencies and runs tests.
-
+- **Call REST API.postman_collection.json** - This postman collection can be used to call the APIs manually while the container is running locally. 
 ---
 
 ## CI/CD Workflow
@@ -113,6 +113,9 @@ Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests
 3. The docker container will build and launch
 
 You should see output indicating which tests passed/failed in the terminal output.
+
+For manually testing APIs, I've included a Postman collection in the root of the repo called `Call REST API.postman_collection.json`. 
+- The caller must POST a name first, which is saved by the app. Calling GET without calling POST with a name first will result in an error. Once the name is stored, calling GET will return a greeting. Calling PUT with an updated name allows updating the name. Calling the DELETE API will wipe the stored name. 
 
 ---
 
