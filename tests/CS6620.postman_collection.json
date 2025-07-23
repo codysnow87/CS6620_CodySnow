@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "e3a1a68a-7010-4adc-9c22-dec22a811039",
+		"name": "CS6620",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45225572",
+		"_collection_link": "https://codys-2828536.postman.co/workspace/Cody-S's-Workspace~163ce24c-f9ec-40c8-8ddd-6c253c67219a/collection/45225572-e3a1a68a-7010-4adc-9c22-dec22a811039?action=share&source=collection_link&creator=45225572"
+	},
+	"item": [
+		{
+			"name": "get dynamo user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/{{user_guid}}?cache=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"{{user_guid}}"
+					],
+					"query": [
+						{
+							"key": "cache",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user create dynamo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// parse the JSON response body",
+							"const jsonData = pm.response.json();",
+							"",
+							"// if your POST returns { \"userId\": \"...\", ... }",
+							"pm.environment.set(\"user_guid\", jsonData.userId);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"info\": \"Test is a DynamoDB power user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user create s3 bucket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"info\": \"Alice is a DynamoDB power user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/make-bucket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"make-bucket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create dynamo table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/create-table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-table"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
