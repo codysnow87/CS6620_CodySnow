@@ -6,8 +6,8 @@ import boto3
 
 # initialize app and env variables
 app = Flask(__name__)
-DYNAMODB_ENDPOINT = os.getenv("DYNAMODB_ENDPOINT", "http://dynamodb-local:8000")
-REGION = os.getenv("REGION", "eu-west-1")
+DYNAMODB_ENDPOINT = os.getenv("DYNAMODB_ENDPOINT")
+REGION = os.getenv("REGION", "us-east-1")
 TABLE_NAME = "Users"
 BUCKET = "users-cache-bucket"
 
@@ -27,7 +27,11 @@ s3 = boto3.resource(
     aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
 )
 
-# define routes 
+# define routes
+@app.route("/health")
+def health():
+    return "", 200
+
 @app.route("/users/<user_id>", methods=["GET"])
 def get_user(user_id):
     # I created a query parameter called "cache" to let the client indicate whether
@@ -79,6 +83,7 @@ def put_user(user_id):
     table = dynamodb.Table(TABLE_NAME)
     item = {"userId": user_id, "info": data.get("info", "")}
     table.put_item(Item=item)
+
     # find/update s3 object with user_id as filename
     key = user_id + ".txt"
     body = data.get("info", "")

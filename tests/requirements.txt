@@ -1,0 +1,5 @@
+pytest
+botocore
+boto3
+flask
+requests

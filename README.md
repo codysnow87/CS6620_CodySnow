@@ -126,3 +126,11 @@ For manually testing APIs, I've included a Postman collection in the root of the
 
 ### Repo Change Log
 - 6/23: Archived "Check for Primes" toy program from Pipeline Assignment Part 1 and added new API container for Pipeline Assignment Part 2
+
+### AI Use Disclaimer
+- Some AI tools were used in the completion of this assignment: 
+  - Visual Studio Code CoPilot intellicode plugin, which provides code suggestions while typing (a.k.a. code completion)
+  - ChatGPT/Claude/Google Search with AI. Prompts used: 
+    - "For this dynamoDB docker example template, what do I replace "location-of-your-dynamodb-demo-app:latest" with? (I pasted in the docker template from dynamoDB's docker site)"
+    - Let's modify the following GET to take in a boolean query parameter called 'cache' (provided it with my GET api code)"
+    - various error messages to get ideas for debugging
