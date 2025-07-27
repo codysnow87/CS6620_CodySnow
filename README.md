@@ -7,7 +7,7 @@ This repository holds submissions for semester assignments.
 ## Current Assignment: CI/CD Pipeline (Part 2)
 
 **Goal:**  
-  - Create a REST API with endpoints for GET, POST, PUT, and DELETE verbs, and tests for each endpoint
+  - Create a APIs with endpoints for GET, POST, PUT, and DELETE verbs, S3 and DynamoDB instances in a localstack container, and tests for each endpoint
 ---
 
 ## Table of Contents
@@ -26,7 +26,7 @@ This repository holds submissions for semester assignments.
 ### CRUD APIs
 
 - **Description:**  
-  A simple demo of RESTful APIs running in a docker container.
+  A more complex demo of RESTful APIs running in a docker container that connect to an S3 instance and a DynamoDB instance in a localstack container. 
 
 ---
 
@@ -34,33 +34,33 @@ This repository holds submissions for semester assignments.
 
     CS6620_CodySnow/
     ├── archive/
-        ├── primes/
-        │   ├── PrimeChecker.py
-        │   └── primes_test.py
-    ├── REST_API/
+        ├── primes (assignment 1)
+        ├── REST_API (assignment 2)
+        ├── tests (assignment 2)
+    ├── api/
         └── app.py
         └── Dockerfile
         └── requirements.txt
     ├── tests/
         └── test_app.py
+        └── Dockerfile
         └── requirements.txt
-    └── .github/
+    ├── .github/
         └── workflows/
             └── python-app.yml
             └── flask-api.yml
-    └── Dockerfile
+    └── docker-compose.yml
     └── run_api.sh
     └── run_tests.sh
 
-- **REST_API/**  
-  - `app.py` – Implements the RESTful APIs
+- **api/**  
+  - `app.py` – Implements the APIs
   - `Dockerfile` – container build script  
   - `requirements.txt` - app-specific requirements for the Docker image
 - **tests/**
-  - `test_app.py` – Tests the RESTful APIs
+  - `test_app.py` – Tests the APIs
   - `requirements.txt` – requirements for running APIs and running the tests
 - **.github/workflows/flask-api.yml** – GitHub Actions workflow that installs dependencies and runs tests.
-- **Call REST API.postman_collection.json** - This postman collection can be used to call the APIs manually while the container is running locally. 
 ---
 
 ## CI/CD Workflow
@@ -110,12 +110,11 @@ This repository holds submissions for semester assignments.
 
 1. Ensure docker and python are installed on your system
 2. From the root folder of the repository, run the script `run_tests.sh` via the command `sh run_tests.sh`
-3. The docker container will build and launch
+3. The docker-compose file will build and launch the docker containers 
+4. The test container will execute its tests against the app container and then exit
+5. The docker-compose file will tear down the containers
 
-You should see output indicating which tests passed/failed in the terminal output.
-
-For manually testing APIs, I've included a Postman collection in the root of the repo called `Call REST API.postman_collection.json`. 
-- The caller must POST a name first, which is saved by the app. Calling GET without calling POST with a name first will result in an error. Once the name is stored, calling GET will return a greeting. Calling PUT with an updated name allows updating the name. Calling the DELETE API will wipe the stored name. 
+You should see output displaying test outcomes in the terminal output.
 
 ---
 
@@ -126,6 +125,7 @@ For manually testing APIs, I've included a Postman collection in the root of the
 
 ### Repo Change Log
 - 6/23: Archived "Check for Primes" toy program from Pipeline Assignment Part 1 and added new API container for Pipeline Assignment Part 2
+- 7/26: Archived REST_API contents from Pipeline Assignment Part 2
 
 ### AI Use Disclaimer
 - Some AI tools were used in the completion of this assignment: 
