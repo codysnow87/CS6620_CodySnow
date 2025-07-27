@@ -48,7 +48,8 @@ def test_create_get_s3_successful():
 
 # Sending a GET request that finds no results returns the appropriate response
 def test_get_nonexistent_user():
-    r = requests.get(f"{BASE}/users/{"notarealuserid"}?cache=false")
+    user_id = "notarealuserid"
+    r = requests.get(f"{BASE}/users/{user_id}?cache=false")
     assert r.status_code == 404
     assert r.json() == {"error": "Not found in database"}
 
@@ -106,7 +107,8 @@ def test_put_user():
 
 # Sending a PUT request with no valid target returns the appropriate response
 def test_put_invalid_user():
-    r = requests.put(f"{BASE}/users/notarealuserid", json={"info": "Rich Purnell"})
+    user_id = "notarealuserid"
+    r = requests.put(f"{BASE}/users/{user_id}", json={"info": "Rich Purnell"})
     assert r.status_code == 200  # PUT does not fail if userId does not exist, it just creates a new one
     assert "userId" in r.json()
     assert r.json()["info"] == "Rich Purnell"
