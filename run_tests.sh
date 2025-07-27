@@ -1,6 +1,13 @@
 #!/bin/sh
-# script must be run from the directory containing this script
-# build the Docker image
-docker build -t flask-api-tests .
-# run the Docker container
-docker run --rm -p 8080:5000 flask-api-tests
+COMPOSE_FILE="docker-compose.yml"
+
+docker compose -f "$COMPOSE_FILE" --profile test up --build --abort-on-container-exit --exit-code-from test-runner
+
+EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+    echo "Tests failed with exit code $EXIT_CODE"
+else
+    echo "Tests passed successfully"
+fi
+
+docker compose -f "$COMPOSE_FILE" --profile test down --volumes
