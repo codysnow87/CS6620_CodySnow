@@ -34,6 +34,9 @@ def health():
 
 @app.route("/users/<user_id>", methods=["GET"])
 def get_user(user_id):
+    # validate user_id
+    if not user_id or not isinstance(user_id, str):
+        return jsonify({"error": "Invalid userId"}), 400
     # I created a query parameter called "cache" to let the client indicate whether
     # they want the s3 file data or the data from DynamoDB users table
     use_cache = request.args.get("cache", "false").lower() == "true"
@@ -60,7 +63,7 @@ def get_user(user_id):
         resp["Item"]["userId"] = user_id
         resp["Item"]["source"] = "dynamodb"
         return jsonify(resp["Item"]), 200
-    return jsonify({"error": "Not found in DynamoDB"}), 404
+    return jsonify({"error": "Not found in database"}), 404
 
 @app.route("/users", methods=["POST"])
 def create_user():
@@ -93,11 +96,20 @@ def put_user(user_id):
 
 @app.route("/users/<user_id>", methods=["DELETE"])
 def delete_user(user_id):
+    # validate user_id
+    if not user_id or not isinstance(user_id, str):
+        return jsonify({"error": "Invalid userId"}), 400
+    
+    table = dynamodb.Table(TABLE_NAME)
+    resp = table.get_item(Key={"userId": user_id})
+    if "Item" not in resp:
+        return jsonify({"error": "Not found in database"}), 404
+    
     # delete from dynamodb
     table = dynamodb.Table(TABLE_NAME)
     table.delete_item(Key={"userId": user_id})
 
-    # delete from s3
+    # delete from s3 with validation
     key = user_id + ".txt"
     obj = s3.Object(BUCKET, key)
     try:
